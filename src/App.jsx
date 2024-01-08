@@ -13,8 +13,18 @@ function App() {
     agree: false,
   });
 
-  function handleChangeContact() {
-    console.log('Contact changed');
+  function handleChangeContact(event) {
+    const name = event.target.name;
+    let value = event.target.value;
+
+    if(event.target.type === 'checkbox') {
+      value = event.target.checked;
+    }
+    
+    setContact({
+      ...contact,
+      [name]: value
+    });
   }
 
   return (
@@ -132,6 +142,10 @@ function App() {
           <label htmlFor="agree">Say, You Agree!</label>
         </div>
       </form>
+
+      <div>
+        {contact.state}
+      </div>
     </div>
   );
 }

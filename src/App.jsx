@@ -143,7 +143,7 @@ function App() {
         </div>
       </form>
 
-      <div className="bg-slate-300 p-2 rounded w-1/2 h-1/2">
+      <div className="bg-gray-200 p-2 rounded w-1/2">
        {contact.fname && <p> Hey {contact.fname}, Welcome. </p>}
        {contact.email && <p> Thanks for giving us your email {contact.email}. </p>}
        {contact.color && (

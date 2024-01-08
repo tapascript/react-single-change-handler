@@ -28,7 +28,7 @@ function App() {
   }
 
   return (
-    <div className="p-8">
+    <div className="p-8 flex justify-around">
       <form>
         <div className="my-2">
           <label htmlFor="fname" className="mx-4">
@@ -143,8 +143,39 @@ function App() {
         </div>
       </form>
 
-      <div>
-        {contact.state}
+      <div className="bg-slate-300 p-2 rounded w-1/2 h-1/2">
+       {contact.fname && <p> Hey {contact.fname}, Welcome. </p>}
+       {contact.email && <p> Thanks for giving us your email {contact.email}. </p>}
+       {contact.color && (
+          <p>
+            Do you know, the Hexacode of your{' '}
+            <span style={{ color: contact.color }}>
+              Favorite Color is: {contact.color}
+            </span>
+          </p>
+        )}
+        {contact.address && <span>You stay at, {contact.address}</span>}
+
+        {contact.city && (
+          <span>
+            {' '}
+            {' , '} {contact.city}
+          </span>
+        )}
+
+        {contact.state && (
+          <span>
+            {' , '} {contact.state}
+          </span>
+        )}
+
+        {contact.zip && (
+          <span>
+            {' , '} {contact.zip}
+          </span>
+        )}
+
+        {contact.agree && <p>You Agree, That's Great!</p>}
       </div>
     </div>
   );

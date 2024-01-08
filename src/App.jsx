@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div className="p-8 flex justify-around">
-      <form>
+      <form className="bg-gray-200 p-2 rounded w-1/2 mr-4">
         <div className="my-2">
           <label htmlFor="fname" className="mx-4">
             Full Name
@@ -144,8 +144,11 @@ function App() {
       </form>
 
       <div className="bg-gray-200 p-2 rounded w-1/2">
-       {contact.fname && <p> Hey {contact.fname}, Welcome. </p>}
-       {contact.email && <p> Thanks for giving us your email {contact.email}. </p>}
+       {contact.fname && <p> Hey <strong>{contact.fname}</strong>, Welcome. </p>}
+       {contact.email && <p> 
+          Thanks for giving us your email <a href={`mailto:${contact.email}`}><u>{contact.email}</u></a>. 
+          </p>
+        }
        {contact.color && (
           <p>
             Do you know, the Hexacode of your{' '}
@@ -174,8 +177,10 @@ function App() {
             {' , '} {contact.zip}
           </span>
         )}
-
-        {contact.agree && <p>You Agree, That's Great!</p>}
+        
+        {contact.agree ?
+         <p>You Agree, That's Great!</p> :
+         <p>You DO NOT agree with us yet!</p>}
       </div>
     </div>
   );

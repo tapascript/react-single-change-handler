@@ -1,15 +1,15 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 function App() {
-  const [contact, setContact] = useState({  
-    fname: '',
-    email: '',
-    password: '',
-    address: '',
-    color: '',
-    city: '',
-    state: '',
-    zip: '',
+  const [contact, setContact] = useState({
+    fname: "",
+    email: "",
+    password: "",
+    address: "",
+    color: "",
+    city: "",
+    state: "",
+    zip: "",
     agree: false,
   });
 
@@ -17,13 +17,13 @@ function App() {
     const name = event.target.name;
     let value = event.target.value;
 
-    if(event.target.type === 'checkbox') {
+    if (event.target.type === "checkbox") {
       value = event.target.checked;
     }
-    
+
     setContact({
       ...contact,
-      [name]: value
+      [name]: value,
     });
   }
 
@@ -37,6 +37,7 @@ function App() {
           <input
             type="text"
             name="fname"
+            value={contact.fname}
             id="fname"
             placeholder="Enter Full Name"
             className="border border-gray-400 rounded p-1"
@@ -51,6 +52,7 @@ function App() {
           <input
             type="email"
             name="email"
+            value={contact.email}
             id="email"
             placeholder="Enter Email Address"
             className="border border-gray-400 rounded p-1"
@@ -65,6 +67,7 @@ function App() {
           <input
             type="password"
             name="password"
+            value={contact.password}
             id="password"
             placeholder="Enter Password"
             className="border border-gray-400 rounded p-1"
@@ -76,7 +79,13 @@ function App() {
           <label htmlFor="color" className="mx-4">
             Your Favorite Color
           </label>
-          <input type="color" name="color" id="color" onChange={handleChangeContact} />
+          <input
+            type="color"
+            name="color"
+            value={contact.color}
+            id="color"
+            onChange={handleChangeContact}
+          />
         </div>
         <div className="my-2">
           <label htmlFor="address" className="mx-4">
@@ -85,6 +94,7 @@ function App() {
           <textarea
             name="address"
             id="address"
+            value={contact.address}
             placeholder="Where Can We Find You?"
             className="border border-gray-400 rounded p-1"
             onChange={handleChangeContact}
@@ -98,6 +108,7 @@ function App() {
           <input
             type="text"
             name="city"
+            value={contact.city}
             id="city"
             placeholder="Enter Your City"
             className="border border-gray-400 rounded p-1"
@@ -109,7 +120,14 @@ function App() {
           <label htmlFor="state" className="mx-4">
             State
           </label>
-          <select name="state" id="state" className="border border-gray-400 rounded p-1" onChange={handleChangeContact} required>
+          <select
+            name="state"
+            id="state"
+            value={contact.state}
+            className="border border-gray-400 rounded p-1"
+            onChange={handleChangeContact}
+            required
+          >
             <option value="">Choose...</option>
             <option value="Solid">Solid</option>
             <option value="Liquid">Liquid</option>
@@ -123,6 +141,7 @@ function App() {
           <input
             type="number"
             name="zip"
+            value={contact.zip}
             id="zip"
             placeholder="Enter Zip/Pin Code"
             className="border border-gray-400 rounded p-1"
@@ -134,6 +153,7 @@ function App() {
           <input
             type="checkbox"
             name="agree"
+            checked={contact.agree}
             id="agree"
             className="mx-4"
             onChange={handleChangeContact}
@@ -144,52 +164,50 @@ function App() {
       </form>
 
       <div className="bg-gray-200 p-2 rounded w-1/2 flex flex-col justify-center items-center">
-       {
-        contact.fname && (
-          <p> 
-            Hey <strong>{contact.fname}</strong>, Welcome. 
+        {contact.fname && (
+          <p>
+            Hey <strong>{contact.fname}</strong>, Welcome.
           </p>
-        )
-      }
-       
-       {
-        contact.email && (
-          <p> 
-            Thanks for giving us your email <a href={`mailto:${contact.email}`}><u>{contact.email}</u></a>. 
+        )}
+
+        {contact.email && (
+          <p>
+            Thanks for giving us your email{" "}
+            <a href={`mailto:${contact.email}`}>
+              <u>{contact.email}</u>
+            </a>
+            .
           </p>
-        )
-       }
+        )}
 
-       {
-        contact.password && (
-          <p>Your password is of <strong>{contact.password.length}</strong> characters.</p>
-        )
-       }
+        {contact.password && (
+          <p>
+            Your password is of <strong>{contact.password.length}</strong>{" "}
+            characters.
+          </p>
+        )}
 
+        {contact.color && (
+          <p>
+            Do you know, the Hexacode of your{" "}
+            <span style={{ color: contact.color }}>
+              Favorite Color is: {contact.color}
+            </span>
+          </p>
+        )}
 
-       {
-        contact.color && (
-            <p>
-              Do you know, the Hexacode of your{' '}
-              <span style={{ color: contact.color }}>
-                Favorite Color is: {contact.color}
-              </span>
-            </p>
-          )
-        }
+        {contact.address && (
+          <p>
+            You stay at, {contact.address}, {contact.city}, {contact.state},{" "}
+            {contact.zip}
+          </p>
+        )}
 
-        {
-          contact.address && (
-            <p>You stay at, {contact.address}, {contact.city}, {contact.state}, {contact.zip}</p>
-          )
-        }
-        
-        
-        {
-          contact.agree ?
-            <p>You Agree, That's Great!</p> :
-            <p>You DO NOT agree with us yet!</p>
-        }
+        {contact.agree ? (
+          <p>You Agree, That's Great!</p>
+        ) : (
+          <p>You DO NOT agree with us yet!</p>
+        )}
       </div>
     </div>
   );

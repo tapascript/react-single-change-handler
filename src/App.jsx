@@ -143,44 +143,53 @@ function App() {
         </div>
       </form>
 
-      <div className="bg-gray-200 p-2 rounded w-1/2">
-       {contact.fname && <p> Hey <strong>{contact.fname}</strong>, Welcome. </p>}
-       {contact.email && <p> 
-          Thanks for giving us your email <a href={`mailto:${contact.email}`}><u>{contact.email}</u></a>. 
+      <div className="bg-gray-200 p-2 rounded w-1/2 flex flex-col justify-center items-center">
+       {
+        contact.fname && (
+          <p> 
+            Hey <strong>{contact.fname}</strong>, Welcome. 
           </p>
+        )
+      }
+       
+       {
+        contact.email && (
+          <p> 
+            Thanks for giving us your email <a href={`mailto:${contact.email}`}><u>{contact.email}</u></a>. 
+          </p>
+        )
+       }
+
+       {
+        contact.password && (
+          <p>Your password is of <strong>{contact.password.length}</strong> characters.</p>
+        )
+       }
+
+
+       {
+        contact.color && (
+            <p>
+              Do you know, the Hexacode of your{' '}
+              <span style={{ color: contact.color }}>
+                Favorite Color is: {contact.color}
+              </span>
+            </p>
+          )
         }
-       {contact.color && (
-          <p>
-            Do you know, the Hexacode of your{' '}
-            <span style={{ color: contact.color }}>
-              Favorite Color is: {contact.color}
-            </span>
-          </p>
-        )}
-        {contact.address && <span>You stay at, {contact.address}</span>}
 
-        {contact.city && (
-          <span>
-            {' '}
-            {' , '} {contact.city}
-          </span>
-        )}
-
-        {contact.state && (
-          <span>
-            {' , '} {contact.state}
-          </span>
-        )}
-
-        {contact.zip && (
-          <span>
-            {' , '} {contact.zip}
-          </span>
-        )}
+        {
+          contact.address && (
+            <p>You stay at, {contact.address}, {contact.city}, {contact.state}, {contact.zip}</p>
+          )
+        }
         
-        {contact.agree ?
-         <p>You Agree, That's Great!</p> :
-         <p>You DO NOT agree with us yet!</p>}
+        
+        {
+          contact.agree ?
+            <p>You Agree, That's Great!</p> :
+            <p>You DO NOT agree with us yet!</p>
+        }
       </div>
     </div>
   );

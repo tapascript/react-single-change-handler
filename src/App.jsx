@@ -1,4 +1,22 @@
+import { useState } from 'react';
+
 function App() {
+  const [contact, setContact] = useState({  
+    fname: '',
+    email: '',
+    password: '',
+    address: '',
+    color: '',
+    city: '',
+    state: '',
+    zip: '',
+    agree: false,
+  });
+
+  function handleChangeContact() {
+    console.log('Contact changed');
+  }
+
   return (
     <div className="p-8">
       <form>
@@ -12,6 +30,7 @@ function App() {
             id="fname"
             placeholder="Enter Full Name"
             className="border border-gray-400 rounded p-1"
+            onChange={handleChangeContact}
             required
           />
         </div>
@@ -25,6 +44,7 @@ function App() {
             id="email"
             placeholder="Enter Email Address"
             className="border border-gray-400 rounded p-1"
+            onChange={handleChangeContact}
             required
           />
         </div>
@@ -38,6 +58,7 @@ function App() {
             id="password"
             placeholder="Enter Password"
             className="border border-gray-400 rounded p-1"
+            onChange={handleChangeContact}
             required
           />
         </div>
@@ -45,7 +66,7 @@ function App() {
           <label htmlFor="color" className="mx-4">
             Your Favorite Color
           </label>
-          <input type="color" name="color" id="color" />
+          <input type="color" name="color" id="color" onChange={handleChangeContact} />
         </div>
         <div className="my-2">
           <label htmlFor="address" className="mx-4">
@@ -56,6 +77,7 @@ function App() {
             id="address"
             placeholder="Where Can We Find You?"
             className="border border-gray-400 rounded p-1"
+            onChange={handleChangeContact}
             required
           />
         </div>
@@ -69,6 +91,7 @@ function App() {
             id="city"
             placeholder="Enter Your City"
             className="border border-gray-400 rounded p-1"
+            onChange={handleChangeContact}
             required
           />
         </div>
@@ -76,7 +99,7 @@ function App() {
           <label htmlFor="state" className="mx-4">
             State
           </label>
-          <select name="state" id="state" className="border border-gray-400 rounded p-1" required>
+          <select name="state" id="state" className="border border-gray-400 rounded p-1" onChange={handleChangeContact} required>
             <option value="">Choose...</option>
             <option value="Solid">Solid</option>
             <option value="Liquid">Liquid</option>
@@ -93,6 +116,7 @@ function App() {
             id="zip"
             placeholder="Enter Zip/Pin Code"
             className="border border-gray-400 rounded p-1"
+            onChange={handleChangeContact}
             required
           />
         </div>
@@ -102,6 +126,7 @@ function App() {
             name="agree"
             id="agree"
             className="mx-4"
+            onChange={handleChangeContact}
             required
           />
           <label htmlFor="agree">Say, You Agree!</label>
